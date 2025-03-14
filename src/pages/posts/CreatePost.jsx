@@ -18,13 +18,17 @@ function CreatePost() {
       return;
     }
 
+    const userId = localStorage.getItem("userId"); // Retrieve user ID
     const postData = {
       title,
       content,
       location,
       latitude: latitude ? parseFloat(latitude) : null,
       longitude: longitude ? parseFloat(longitude) : null,
+      author: userId,  // Add user ID
     };
+
+    console.log("Sending postData:", postData); // Debugging line
 
     try {
       const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`, {

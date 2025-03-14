@@ -97,8 +97,17 @@ function PostDetails() {
     <div className="container">
       {editing ? (
         <form onSubmit={handleUpdatePost}>
-          <input type="text" value={editedTitle} onChange={(e) => setEditedTitle(e.target.value)} required />
-          <textarea value={editedContent} onChange={(e) => setEditedContent(e.target.value)} required></textarea>
+          <input
+            type="text"
+            value={editedTitle}
+            onChange={(e) => setEditedTitle(e.target.value)}
+            required
+          />
+          <textarea
+            value={editedContent}
+            onChange={(e) => setEditedContent(e.target.value)}
+            required
+          ></textarea>
           <button type="submit">Save Changes</button>
           <button type="button" onClick={() => setEditing(false)}>Cancel</button>
         </form>
@@ -107,13 +116,18 @@ function PostDetails() {
           <h2>{post.title}</h2>
           <p><strong>By {post.author?.username}</strong></p>
           <p>{post.content}</p>
-        </>
-      )}
-
-      {post.author?._id && userId && post.author._id === userId && (
-        <>
-          <button className="delete-btn" onClick={handleDeletePost}>Delete Post</button>
-          <button className="edit-btn" onClick={() => setEditing(true)}>Edit Post</button>
+          {post.location && <p><strong>Location:</strong> {post.location}</p>}
+          {post.weatherData && (
+            <p>
+              <strong>Weather:</strong> {post.weatherData.temperature}°C, {post.weatherData.conditions} {post.weatherData.icon}
+            </p>
+          )}
+          {post.author?._id && userId && post.author._id === userId && (
+            <>
+              <button className="delete-btn" onClick={() => handleDeletePost()}>Delete Post</button>
+              <button className="edit-btn" onClick={() => setEditing(true)}>Edit Post</button>
+            </>
+          )}
         </>
       )}
     </div>
