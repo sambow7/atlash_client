@@ -68,16 +68,16 @@ function PostDetails() {
   const handleDeletePost = async () => {
     const token = localStorage.getItem("token");
     if (!token) return alert("You must be logged in to delete this post.");
-
+  
     try {
       const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts/${id}`, {
         method: "DELETE",
         headers: { "Authorization": `Bearer ${token}` },
       });
-
+  
       if (res.ok) {
         alert("Post deleted successfully.");
-        navigate("/");
+        navigate("/"); // Redirect after deletion
       } else {
         alert("Failed to delete post.");
       }

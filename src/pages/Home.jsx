@@ -14,6 +14,8 @@ function Home() {
       .catch((err) => console.error("Error fetching posts:", err));
   }, []);
 
+  console.log("Posts state:", posts);
+
   return (
     <div className="container">
       <h2>Latest Posts</h2>
