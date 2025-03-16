@@ -1,8 +1,10 @@
-import React from "react";
-import AppRoutes from "./routes/routes"; // Adjust path if needed
+import AppRoutes from "./routes/routes";
+import './styles/Navbar.css';
+import './styles/Home.css';
+import './styles/Auth.css';
 
 function App() {
-  return <AppRoutes />;
+  return <AppRoutes />;  // ✅ Just use AppRoutes directly
 }
 
 export default App;

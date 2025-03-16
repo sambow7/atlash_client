@@ -1,0 +1,23 @@
+form {
+  background: #e6e6e2; /* Soft greyish off-white */
+  padding: 20px;
+  border-radius: 8px;
+}
+
+input, textarea {
+  background: #f8f8f6; /* Light ash */
+  border: 1px solid #90a88c; /* Soft green border */
+  padding: 10px;
+}
+
+button {
+  background: #5a7f61; /* Earthy green */
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+button:hover {
+  background: #6d9875; /* Slightly lighter green */
+}

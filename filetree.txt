@@ -771,10 +771,13 @@
 │   │   ├── auth
 │   │   └── posts
 │   ├── routes
-│   │   └── routes.js
+│   │   └── routes.jsx
 │   └── styles
+│       ├── Auth.css
+│       ├── Home.css
 │       ├── Navbar.css
-│       └── PostDetails.css
+│       ├── PostDetails.css
+│       └── Profile.css
 └── vite.config.js
 
-259 directories, 519 files
+259 directories, 522 files

@@ -1,0 +1,141 @@
+.home-container {
+  max-width: 1000px;
+  margin: 20px auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.home-title {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #3e4e3e;
+  margin-bottom: 5px;
+}
+
+.home-subtitle {
+  font-size: 1.2rem;
+  color: #6b8e68;
+  margin-bottom: 20px;
+}
+
+.posts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.post-preview {
+  background: #ffffff;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.post-preview:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.post-title {
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #3e4e3e;
+  margin-bottom: 5px;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #6b8e68;
+}
+
+.post-content {
+  font-size: 1rem;
+  color: #3e4e3e;
+  line-height: 1.5;
+}
+
+.read-more {
+  display: inline-block;
+  margin-top: 10px;
+  color: #6b8e68;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.read-more:hover {
+  color: #7fa77a;
+}
+
+.no-posts {
+  font-size: 1.2rem;
+  color: #6b8e68;
+}
+
+.post-likes {
+  font-size: 0.9rem;
+  color: #6b8e68;
+  font-weight: bold;
+}
+
+h1, h2, h3 {
+  color: #3e4e3e; /* Dark forest green */
+}
+
+a {
+  color: #6b8e68; /* Muted green */
+  text-decoration: none;
+}
+
+a:hover {
+  color: #7fa77a; /* Softer muted green */
+}
+
+/* Mobile Navigation */
+.menu-icon {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: #1e1e1e;
+    width: 200px;
+    padding: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-icon {
+    display: block;
+  }
+
+  .home-container {
+    padding: 10px;
+  }
+}
+
+/* Logout Button */
+.logout-btn {
+  background: red;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: white;
+  border-radius: 5px;
+  transition: background 0.3s ease-in-out;
+}
+
+.logout-btn:hover {
+  background: darkred;
+}

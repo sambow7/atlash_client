@@ -122,13 +122,13 @@ function PostDetails() {
   const handleDeleteComment = async (commentId) => {
     const token = localStorage.getItem("token");
     if (!token) return alert("You must be logged in to delete this comment.");
-  
+
     try {
       const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/comments/${commentId}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
-  
+
       if (res.ok) {
         setPost((prev) => ({
           ...prev,
@@ -144,11 +144,36 @@ function PostDetails() {
     }
   };
 
+  const handleLikePost = async () => {
+    const token = localStorage.getItem("token");
+    if (!token) {
+      alert("You must be logged in to like a post.");
+      return;
+    }
+
+    try {
+      const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts/${id}/like`, {
+        method: "POST",
+        headers: { "Authorization": `Bearer ${token}` },
+      });
+
+      if (res.ok) {
+        const updatedPost = await res.json();
+        setPost(updatedPost);
+      } else {
+        alert("Failed to like post.");
+      }
+    } catch (error) {
+      console.error("Error liking post:", error);
+    }
+  };
+
   if (loading) return <h2>Loading...</h2>;
   if (!post) return <h2>Post not found.</h2>;
 
   console.log("Logged-in User ID:", userId);
   console.log("Post Author ID:", post.author?._id);
+  console.log("Liking Post ID:", id);
 
   return (
     <div className="container">
@@ -170,6 +195,9 @@ function PostDetails() {
         </form>
       ) : (
         <>
+          <button onClick={() => navigate("/")} className="back-btn">
+            ← Back to Home
+          </button>
           <h2>{post.title}</h2>
           <p><strong>By {post.author?.username}</strong></p>
           <p>{post.content}</p>
@@ -188,18 +216,21 @@ function PostDetails() {
         </>
       )}
       <div>
+        <button onClick={handleLikePost} className="like-btn">
+          ❤️ {post.likes.length} Likes
+        </button>
         <h3>Comments</h3>
         {post.comments && post.comments.length > 0 ? (
           <ul>
-          {post.comments.map((comment) => (
-            <li key={comment._id}>
-              <strong>{comment.author?.username || "Unknown User"}:</strong> {comment.text}
-              {comment.author?._id === userId && (
-                <button onClick={() => handleDeleteComment(comment._id)}>🗑 Delete</button>
-              )}
-            </li>
-          ))}
-        </ul>
+            {post.comments.map((comment) => (
+              <li key={comment._id}>
+                <strong>{comment.author?.username || "Unknown User"}:</strong> {comment.text}
+                {comment.author?._id === userId && (
+                  <button onClick={() => handleDeleteComment(comment._id)}>🗑 Delete</button>
+                )}
+              </li>
+            ))}
+          </ul>
         ) : (
           <p>No comments yet.</p>
         )}

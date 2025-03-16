@@ -5,6 +5,7 @@ import "../styles/Navbar.css";
 function Navbar() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const navigate = useNavigate();
+  console.log("Navbar isLoggedIn:", isLoggedIn);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
