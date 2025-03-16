@@ -27,6 +27,7 @@ function Navbar() {
           <>
             <li><Link to="/create-post">Create Post</Link></li>
             <li><Link to="/dashboard">Dashboard</Link></li>
+            <li><Link to="/profile">Profile</Link></li>
             <li><button onClick={handleLogout} className="logout-btn">Logout</button></li>
           </>
         ) : (
