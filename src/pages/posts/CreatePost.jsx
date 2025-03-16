@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -62,6 +63,12 @@ function CreatePost() {
         <input type="text" placeholder="Longitude (optional)" value={longitude} onChange={(e) => setLongitude(e.target.value)} />
         <button type="submit">Create Post</button>
       </form>
+
+      {/* Comments Placeholder */}
+      <div>
+        <h3>Comments</h3>
+        <p>No comments yet.</p>
+      </div>
     </div>
   );
 }
