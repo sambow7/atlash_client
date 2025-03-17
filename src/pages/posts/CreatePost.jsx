@@ -1,6 +1,7 @@
-
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../../styles/CreatePost.css";
+
 
 function CreatePost() {
   const [title, setTitle] = useState("");
@@ -9,6 +10,7 @@ function CreatePost() {
   const [latitude, setLatitude] = useState(""); // New field
   const [longitude, setLongitude] = useState(""); // New field
   const navigate = useNavigate();
+  const [locationUrl, setLocationUrl] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -38,7 +40,7 @@ function CreatePost() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify(postData),
+        body: JSON.stringify({ title, content, location, latitude, longitude, locationUrl }),
       });
 
       if (res.ok) {
@@ -53,14 +55,25 @@ function CreatePost() {
   };
 
   return (
-    <div>
+    <div className="create-post-container"><button onClick={() => navigate("/")} className="back-btn">
+      ← Back to Home
+    </button>
       <h2>Create a New Post</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="create-post-form">
         <input type="text" placeholder="Title" value={title} onChange={(e) => setTitle(e.target.value)} required />
         <textarea placeholder="Content" value={content} onChange={(e) => setContent(e.target.value)} required />
         <input type="text" placeholder="Location (City, Country)" value={location} onChange={(e) => setLocation(e.target.value)} />
         <input type="text" placeholder="Latitude (optional)" value={latitude} onChange={(e) => setLatitude(e.target.value)} />
         <input type="text" placeholder="Longitude (optional)" value={longitude} onChange={(e) => setLongitude(e.target.value)} />
+        <div className="form-group">
+          <label>Travel Location URL:</label>
+          <input
+            type="text"
+            value={locationUrl}
+            onChange={(e) => setLocationUrl(e.target.value)}
+            placeholder="Enter a Google Maps or travel link"
+          />
+        </div>
         <button type="submit">Create Post</button>
       </form>
 

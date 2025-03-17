@@ -6,9 +6,16 @@
   font-family: Arial, sans-serif;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+  color: #333; /* Keeps it readable */
+  background-color: #f7f7f7; /* Subtle background for contrast */
+}
 
-/* Headings */
-h1, h2, h3 {
+h1, h2, h3, .navbar {
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
   color: #222;
   margin-bottom: 15px;
 }

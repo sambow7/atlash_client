@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/Dashboard.css";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
@@ -22,12 +23,16 @@ function Dashboard() {
     }
   }, [navigate]);
 
-  if (!user) return <h2>Loading...</h2>;
+  if (!user) return <h2 className="dashboard-loading">Loading...</h2>;
 
   return (
-    <div>
-      <h2>Welcome, {user.username}!</h2>
-      <p>Email: {user.email}</p>
+    <div className="dashboard-container">
+      <div className="dashboard-header">
+        <h2>Welcome, {user.username}!</h2>
+      </div>
+      <div className="dashboard-user-info">
+        <p>Email: {user.email}</p>
+      </div>
     </div>
   );
 }
