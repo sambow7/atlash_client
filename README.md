@@ -13,12 +13,12 @@
 ## 🛠 Tech Stack
 - **Frontend:** React, Vite, Tailwind CSS
 - **State Management:** React Hooks
-- **Backend:** [atlash_app](https://github.com/yourgithub/atlash_app) (Node.js, Express, MongoDB)
+- **Backend:** [atlash_app](https://github.com/sambow7/atlash_app) (Node.js, Express, MongoDB)
 - **API Integration:** OpenWeather API, Cloudinary
 - **Deployment:** Netlify (Frontend) | Heroku (Backend)
 
 ## 🔧 Setup & Installation
 1. Clone the repo:
    ```sh
-   git clone https://github.com/yourgithub/atlash_client.git
+   git clone https://github.com/sambow7/atlash_client.git
    cd atlash_client
