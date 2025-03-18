@@ -1,12 +1,4 @@
-.post-content-container {
-  background: #ffffff; /* Light background for contrast */
-  padding: 15px;
-  border-radius: 10px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin-bottom: 20px; /* Spacing between sections */
-}
-
-.create-post-container {
+.auth-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,13 +6,19 @@
   width: 60%;
   margin: 50px auto;
   padding: 20px;
-  background: #f4f7f1;
+  background: #f4f7f1; /* Light green-grey background */
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 128, 0, 0.2);
 }
 
-.create-post-form input,
-.create-post-form textarea {
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
+}
+
+.auth-form input {
   width: 100%;
   padding: 10px;
   margin: 10px 0;
@@ -29,12 +27,7 @@
   font-size: 16px;
 }
 
-.create-post-form textarea {
-  height: 100px;
-  resize: none;
-}
-
-.create-post-form button {
+.auth-form button {
   background: #4a7c59;
   color: white;
   padding: 10px 15px;
@@ -45,19 +38,17 @@
   transition: background 0.3s;
 }
 
-.create-post-form button:hover {
+.auth-form button:hover {
   background: #3a5c40;
 }
 
-.back-btn {
-  background: none;
-  border: none;
+.auth-link {
+  margin-top: 10px;
+  font-size: 14px;
   color: #4a7c59;
-  font-size: 16px;
-  cursor: pointer;
-  margin-bottom: 10px;
 }
 
-.back-btn:hover {
+.auth-link:hover {
   text-decoration: underline;
+  color: #3a5c40;
 }

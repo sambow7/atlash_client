@@ -1,4 +1,5 @@
 import { useState } from "react";
+import "../../styles/Login.css"; // ✅ Import styles
 
 function Login() {
   const [email, setEmail] = useState("");
@@ -6,17 +7,17 @@ function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-  
+
     try {
       const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/auth/login`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
       });
-  
+
       const data = await res.json();
       console.log("Login API response:", data);
-  
+
       if (res.ok) {
         localStorage.setItem("token", data.token);  // ✅ Store the token
         localStorage.setItem("userId", data.user.id);  // ✅ Store the user ID
@@ -34,9 +35,9 @@ function Login() {
   };
 
   return (
-    <div>
+    <div className="auth-container">
       <h2>Login</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="auth-form">
         <input type="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} required />
         <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} required />
         <button type="submit">Login</button>

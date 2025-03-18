@@ -206,7 +206,7 @@ function PostDetails() {
           <button onClick={() => navigate("/")} className="back-btn">
             ← Back to Home
           </button>
-          <div className="post-content-container">
+          <div className="post-details-container">
             <h2>{post.title}</h2>
             <p><strong>By {post.author?.username}</strong></p>
             <p>{post.content}</p>
@@ -238,7 +238,7 @@ function PostDetails() {
         {post.comments && post.comments.length > 0 ? (
           <ul>
             {post.comments.map((comment) => (
-              <li key={comment._id}>
+              <li key={comment._id} className="comment">
                 <strong>{comment.author?.username || "Fetching..."}</strong>: {comment.text}
                 {comment.author?._id === userId && (
                   <button onClick={() => handleDeleteComment(comment._id)}>🗑 Delete</button>
