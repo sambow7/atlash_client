@@ -6,6 +6,8 @@ function Home() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
+    document.title = "Atlash | Explore Travel Stories"; // ✅ Update tab title
+
     fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`)
       .then((res) => res.json())
       .then((data) => {
