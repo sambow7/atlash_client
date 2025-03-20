@@ -1,10 +1,10 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "../pages/Home"; 
+import Home from "../pages/Home/Home"; 
 import Login from "../pages/auth/Login";
 import Signup from "../pages/auth/Signup";
-import Dashboard from "../pages/Dashboard";
-import CreatePost from "../pages/posts/CreatePost";
-import PostDetails from "../pages/posts/PostDetails";
+import Dashboard from "../pages/Dashboard/Dashboard";
+import CreatePost from "../pages/Posts/CreatePost";
+import PostDetails from "../pages/Posts/PostDetails";
 import Layout from "../layouts/Layout";
 import Profile from "../pages/Profile";
 

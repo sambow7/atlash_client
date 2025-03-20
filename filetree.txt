@@ -391,6 +391,14 @@
 │   │   ├── imurmurhash.js
 │   │   ├── imurmurhash.min.js
 │   │   └── package.json
+│   ├── invariant
+│   │   ├── CHANGELOG.md
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── browser.js
+│   │   ├── invariant.js
+│   │   ├── invariant.js.flow
+│   │   └── package.json
 │   ├── is-extglob
 │   │   ├── LICENSE
 │   │   ├── README.md
@@ -476,6 +484,15 @@
 │   │   ├── README.md
 │   │   ├── index.js
 │   │   └── package.json
+│   ├── loose-envify
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── cli.js
+│   │   ├── custom.js
+│   │   ├── index.js
+│   │   ├── loose-envify.js
+│   │   ├── package.json
+│   │   └── replace.js
 │   ├── lru-cache
 │   │   ├── LICENSE
 │   │   ├── README.md
@@ -610,6 +627,17 @@
 │   │   ├── static.node.js
 │   │   ├── static.react-server.js
 │   │   └── test-utils.js
+│   ├── react-fast-compare
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── index.d.ts
+│   │   ├── index.js
+│   │   └── package.json
+│   ├── react-helmet-async
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── lib
+│   │   └── package.json
 │   ├── react-refresh
 │   │   ├── LICENSE
 │   │   ├── README.md
@@ -658,6 +686,13 @@
 │   │   ├── LICENSE
 │   │   ├── README.md
 │   │   ├── lib
+│   │   └── package.json
+│   ├── shallowequal
+│   │   ├── LICENSE
+│   │   ├── README.md
+│   │   ├── index.js
+│   │   ├── index.js.flow
+│   │   ├── index.original.js
 │   │   └── package.json
 │   ├── shebang-command
 │   │   ├── index.js
@@ -753,31 +788,29 @@
 ├── package-lock.json
 ├── package.json
 ├── public
+│   ├── _redirects
 │   └── vite.svg
 ├── src
 │   ├── App.css
 │   ├── App.jsx
 │   ├── assets
+│   │   ├── profile-placeholder.png
 │   │   └── react.svg
 │   ├── components
+│   │   ├── Navbar.css
 │   │   └── Navbar.jsx
 │   ├── index.css
 │   ├── layouts
 │   │   └── Layout.jsx
 │   ├── main.jsx
 │   ├── pages
-│   │   ├── Dashboard.jsx
-│   │   ├── Home.jsx
-│   │   ├── auth
-│   │   └── posts
-│   ├── routes
-│   │   └── routes.jsx
-│   └── styles
-│       ├── Auth.css
-│       ├── Home.css
-│       ├── Navbar.css
-│       ├── PostDetails.css
-│       └── Profile.css
+│   │   ├── Auth
+│   │   ├── Dashboard
+│   │   ├── Home
+│   │   ├── Posts
+│   │   └── Profile
+│   └── routes
+│       └── routes.jsx
 └── vite.config.js
 
-259 directories, 522 files
+267 directories, 547 files
