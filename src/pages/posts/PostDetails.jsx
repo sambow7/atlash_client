@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import "../../styles/PostDetails.css";
+import "../Posts/PostDetails.css";
 
 function PostDetails() {
   const { id } = useParams();

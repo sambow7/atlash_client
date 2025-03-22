@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Profile.css"; // Ensure styling is applied
-import Navbar from "../components/Navbar";
-import profilePlaceholder from "../assets/profile-placeholder.png";
+import "../Profile/Profile.css";
+import profilePlaceholder from "../../assets/profile-placeholder.png";
 
 console.log("Profile Placeholder Image:", profilePlaceholder);
 

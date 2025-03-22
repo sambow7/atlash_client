@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../styles/Dashboard.css";
+import "../Dashboard/Dashboard.css";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
