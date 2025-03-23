@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import API from "../../utils/api";
 import "./Home.css";
 
 
@@ -7,15 +8,23 @@ function Home() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    document.title = "Atlash | Explore Travel Stories"; // ✅ Update tab title
+    document.title = "Atlash | Explore Travel Stories";
 
-    fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/posts`)
-      .then((res) => res.json())
-      .then((data) => {
-        console.log("Fetched posts:", data); // Debugging log
-        setPosts(data);
+    API.get("/api/posts")
+      .then((res) => {
+        console.log("Fetched posts:", res.data);
+        // Ensure res.data is an array
+        if (Array.isArray(res.data)) {
+          setPosts(res.data);
+        } else {
+          console.error("Unexpected response format: ", res.data);
+          setPosts([]); // Fallback to an empty array
+        }
       })
-      .catch((err) => console.error("Error fetching posts:", err));
+      .catch((err) => {
+        console.error("Error fetching posts:", err);
+        setPosts([]); // Fallback to avoid map error
+      });
   }, []);
 
   console.log("Posts state:", posts);

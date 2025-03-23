@@ -1,32 +1,33 @@
 import { useState } from "react";
 import "./Login.css";
+import API from "../../utils/api";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/auth/login`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+      const res = await API.post("/api/auth/login", {
+        email,
+        password,
       });
 
-      const data = await res.json();
+      const data = res.data;
       console.log("Login API response:", data);
 
-      if (res.ok) {
-        localStorage.setItem("token", data.token);  // ✅ Store the token
-        localStorage.setItem("userId", data.user.id);  // ✅ Store the user ID
+      if (data.token && data.user) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("userId", data.user.id);
         console.log("Stored userId:", data.user.id);
         console.log("Stored token:", data.token);
         alert("Login successful!");
-        window.location.href = "/dashboard"; // Redirect after login
+        window.location.href = "/dashboard";
       } else {
-        alert(data.message || "Login failed.");
+        alert("Login failed. Missing token or user.");
       }
     } catch (error) {
       console.error("Login Error:", error);

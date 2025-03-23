@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../Profile/Profile.css";
 import profilePlaceholder from "../../assets/profile-placeholder.png";
+import API from '../../utils/api'; // Axios instance
 
 console.log("Profile Placeholder Image:", profilePlaceholder);
 
@@ -31,12 +32,8 @@ function Profile() {
       alert("Unauthorized! Please log in.");
       navigate("/login");
     } else {
-      fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/auth/me`, {
-        method: "GET",
-        headers: { "Authorization": `Bearer ${token}` },
-      })
-        .then((res) => res.json())
-        .then((data) => setUser(data))
+      API.get("/auth/me")
+        .then((res) => setUser(res.data))
         .catch((err) => console.error("Error fetching user:", err));
     }
   }, [navigate]);
@@ -47,19 +44,18 @@ function Profile() {
     if (!token) return alert("You must be logged in to update your profile.");
 
     try {
-      const res = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/auth/update-profile`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ username: editedUsername, email: editedEmail, bio: editedBio, profilePicture: editedProfilePic }),
+      const res = await API.put("/auth/update-profile", {
+        username: editedUsername,
+        email: editedEmail,
+        bio: editedBio,
+        profilePicture: editedProfilePic,
       });
 
-      if (res.ok) {
-        const updatedUser = await res.json();
+      if (res.status === 200) {
+        const updatedUser = res.data;
         setUser(updatedUser);
         setEditing(false);
         alert("Profile updated successfully!");
-
-        // ✅ Force a full UI refresh
         window.location.reload();
       } else {
         alert("Failed to update profile.");
@@ -90,15 +86,8 @@ function Profile() {
     }
 
     try {
-      const response = await fetch(`${import.meta.env.VITE_BACK_END_SERVER_URL}/api/profile/upload`, {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${token}`
-        },
-        body: formData
-      });
-
-      const data = await response.json();
+      const response = await API.post("/profile/upload", formData);
+      const data = response.data;
       if (data.success) {
         setProfilePic(data.profilePic); // Update profile picture state
         localStorage.setItem("profilePic", data.profilePic);
