@@ -14,9 +14,7 @@ function Dashboard() {
       alert("Unauthorized! Please log in.");
       navigate("/login");
     } else {
-      API.get("/auth/me", {
-        headers: { Authorization: `Bearer ${token}` },
-      })
+      API.get("/auth/me")
         .then((res) => setUser(res.data))
         .catch((err) => console.error("Error fetching user:", err));
     }
@@ -27,7 +25,7 @@ function Dashboard() {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const res = await API.get("/posts");
+        const res = await API.get("/posts/mine");
         setPosts(res.data);
       } catch (err) {
         console.error("Error fetching posts:", err);

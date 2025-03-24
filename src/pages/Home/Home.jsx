@@ -10,7 +10,7 @@ function Home() {
   useEffect(() => {
     document.title = "Atlash | Explore Travel Stories";
 
-    API.get("/api/posts")
+    API.get("/posts")
       .then((res) => {
         console.log("Fetched posts:", res.data);
         // Ensure res.data is an array
