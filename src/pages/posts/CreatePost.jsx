@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "../Posts/CreatePost.css";
+import "./CreatePost.css";
 
 
 function CreatePost() {
